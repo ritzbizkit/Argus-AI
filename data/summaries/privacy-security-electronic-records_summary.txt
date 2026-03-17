@@ -1,0 +1,1 @@
+Electronic Health Records (EHRs) maintain federal privacy protections through access controls, encryption, and audit trails. Providers are legally required to notify patients and the government of any data breaches involving more than 500 records.
