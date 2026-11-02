@@ -1,23 +1,34 @@
-import os
+"""Print the lead-3 extractive baseline summary for each processed document.
 
-def get_lead3_summary(text):
-    # Split by period to get sentences, take first 3, and rejoin
-    sentences = text.split('.')
-    lead3 = '. '.join(sentences[:3]).strip() + '.'
-    return lead3
+This only shows the baseline text. To score it against the reference summaries,
+use `evaluate.py`, which reports ROUGE for the baseline and for a checkpoint on
+the same documents.
+"""
 
-def main():
-    processed_dir = "data/processed"
-    
-    print("--- Argus AI: Lead-3 Baseline Results ---")
-    for filename in os.listdir(processed_dir):
-        if filename.endswith(".txt"):
-            with open(os.path.join(processed_dir, filename), "r", encoding="utf-8") as f:
-                content = f.read()
-            
-            baseline_summary = get_lead3_summary(content)
-            print(f"\nFILE: {filename}")
-            print(f"BASELINE: {baseline_summary[:200]}...") # Print first 200 chars
+import sys
+from pathlib import Path
+
+from corpus import load_corpus
+from evaluate import lead3
+
+PREVIEW_CHARS = 200
+
+
+def main(processed_dir="data/processed", summaries_dir="data/summaries") -> int:
+    corpus = load_corpus(processed_dir, summaries_dir)
+    if not corpus.pairs:
+        print("No document/summary pairs found.", file=sys.stderr)
+        return 1
+
+    print("--- Argus AI: lead-3 baseline summaries ---")
+    for document, _ in corpus.pairs:
+        summary = lead3(document.read_text(encoding="utf-8"))
+        print(f"\nFILE: {document.name}")
+        print(f"BASELINE: {summary[:PREVIEW_CHARS]}...")
+
+    print("\nRun `python evaluate.py` to score these against the references.")
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
