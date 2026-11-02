@@ -45,7 +45,7 @@ What this prototype does and does not do:
   against labelled data.
 - **The stages run in a fixed linear sequence.** There is no branching or
   conditional routing.
-- **The fine-tuning corpus is five documents.** See *Corpus* below.
+- **The fine-tuning corpus is six documents.** See *Corpus* below.
 - Only the first five pages of an uploaded PDF are read.
 
 ## Running it
@@ -85,16 +85,25 @@ python extract_text.py   # data/raw → data/processed
 python clean_text.py     # normalise data/processed in place
 ```
 
-**Current state: five usable document/summary pairs.** `data/raw/` contains
-`NIST.SP.800-53r5.pdf` and `data/summaries/` has a summary for it, but
-`extract_text.py` has not produced text for it, so there is no NIST pair — which
-means NIST SP 800-53 is **not** currently represented in the fine-tuning corpus,
-despite being the largest source document. `corpus.py` reports this on every
-training and evaluation run rather than dropping it silently.
+**Current state: six document/summary pairs**, one per source PDF.
 
-Five pairs is far too few to fine-tune a model of this size and get a result
-that generalises. `train.py` refuses to run below twenty pairs unless passed
-`--allow-tiny-dataset`, and prints a warning when it does.
+Two corpus bugs were fixed and are worth knowing about if you rebuild:
+
+- **NIST SP 800-53 was missing.** The PDF and its summary were both present but
+  extraction had never produced text for it, so the pair silently did not
+  exist — the largest source document was absent from the corpus. `corpus.py`
+  now reports unpaired files on every training and evaluation run, and
+  `extract_text.py` exits non-zero on failure rather than looking like a clean
+  run.
+- **The GDPR text was corrupted.** Extraction with `pypdf` inserted spaces
+  inside words — "Ar ticle", "Ha ving regar d", "Committ ee" — affecting
+  thousands of tokens and inflating that document from its true 55,790 words to
+  69,786. Extraction now uses PyMuPDF, which reads it correctly and matches the
+  extractor `app.py` already uses at runtime.
+
+Six pairs is still far too few to fine-tune a model of this size and get a
+result that generalises. `train.py` refuses to run below twenty pairs unless
+passed `--allow-tiny-dataset`, and warns when it proceeds.
 
 ## Evaluation
 
@@ -107,13 +116,13 @@ python evaluate.py --system model        # ./argus_v2_bart
 python evaluate.py --system model --model-path facebook/bart-large-cnn
 ```
 
-Lead-3 extractive baseline, n = 5:
+Lead-3 extractive baseline, n = 6:
 
 | System | ROUGE-1 | ROUGE-2 | ROUGE-L |
 | --- | --- | --- | --- |
-| Lead-3 baseline | 0.2077 | 0.0509 | 0.1340 |
+| Lead-3 baseline | 0.2364 | 0.0697 | 0.1643 |
 
-Any summarisation model is only worth using if it beats this. At n = 5 the
+Any summarisation model is only worth using if it beats this. At n = 6 the
 figure is indicative, not a result.
 
 ## Repository layout
@@ -121,7 +130,7 @@ figure is indicative, not a result.
 | Path | Purpose |
 | --- | --- |
 | `app.py` | Streamlit app and pipeline orchestration |
-| `extract_text.py` | PDF → text, `data/raw` → `data/processed` |
+| `extract_text.py` | PDF → text (PyMuPDF), `data/raw` → `data/processed` |
 | `clean_text.py` | Normalise the extracted corpus in place |
 | `text_processing.py` | Cleaning, normalisation and chunking helpers |
 | `corpus.py` | Pairs documents with summaries; reports unpaired files |

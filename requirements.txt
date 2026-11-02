@@ -6,8 +6,7 @@ sentence-transformers
 pandas
 PyMuPDF
 
-# Corpus extraction (extract_text.py)
-pypdf
+# Corpus extraction (extract_text.py) uses PyMuPDF, listed above
 
 # Evaluation (evaluate.py)
 rouge-score
