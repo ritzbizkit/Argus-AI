@@ -1,41 +1,39 @@
-import os
-import re
+"""Normalise the extracted corpus in `data/processed/` in place.
 
-def clean_text(text):
-    """
-    Scrubs the raw text to make it suitable for a Transformer.
-    """
-    # 1. Remove obvious page markers
-    text = re.sub(r'Page \d+ of \d+', '', text)
-    
-    # 2. Fix words split by line breaks (e.g., "com- pliance" -> "compliance")
-    # This is vital for tokenization accuracy
-    text = re.sub(r'(\w+)-\s+(\w+)', r'\1\2', text)
-    
-    # 3. Remove non-ASCII characters that often hide in PDFs
-    text = text.encode("ascii", "ignore").decode()
-    
-    # 4. Collapse multiple spaces/newlines into single spaces
-    text = re.sub(r'\s+', ' ', text).strip()
-    
-    return text
+Run after `extract_text.py` and before `train.py`.
 
-def main():
-    processed_dir = "data/processed"
-    
-    for filename in os.listdir(processed_dir):
-        if filename.endswith(".txt"):
-            file_path = os.path.join(processed_dir, filename)
-            
-            with open(file_path, "r", encoding="utf-8") as f:
-                raw_text = f.read()
-            
-            cleaned_text = clean_text(raw_text)
-            
-            with open(file_path, "w", encoding="utf-8") as f:
-                f.write(cleaned_text)
-            
-            print(f"Successfully cleaned: {filename}")
+Usage:
+    python clean_text.py [directory]
+"""
+
+import sys
+from pathlib import Path
+
+from text_processing import normalise_corpus_text
+
+DEFAULT_DIR = Path("data/processed")
+
+
+def main(directory: Path = DEFAULT_DIR) -> int:
+    if not directory.is_dir():
+        print(f"No such directory: {directory}", file=sys.stderr)
+        print("Run extract_text.py first.", file=sys.stderr)
+        return 1
+
+    files = sorted(directory.glob("*.txt"))
+    if not files:
+        print(f"No .txt files found in {directory}", file=sys.stderr)
+        return 1
+
+    for path in files:
+        text = path.read_text(encoding="utf-8")
+        path.write_text(normalise_corpus_text(text), encoding="utf-8")
+        print(f"Cleaned: {path.name}")
+
+    print(f"\nDone. {len(files)} file(s) normalised.")
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    target = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_DIR
+    raise SystemExit(main(target))
