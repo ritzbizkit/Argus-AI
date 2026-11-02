@@ -1,0 +1,13 @@
+# Application and pipeline
+streamlit
+torch
+transformers>=4.38.0
+sentence-transformers
+pandas
+PyMuPDF
+
+# Corpus extraction (extract_text.py)
+pypdf
+
+# Evaluation (evaluate.py)
+rouge-score
