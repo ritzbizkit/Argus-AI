@@ -1,0 +1,1 @@
+Audit and accountability requires organizations to define loggable events, generate audit records with sufficient content, and retain them with adequate storage capacity. Records must be protected, reviewed and analyzed for indications of inappropriate activity, with time stamps and non-repudiation support.

@@ -1,0 +1,1 @@
+System and communications protection requires organizations to isolate security functions, protect system boundaries, and secure data in transit and at rest through cryptography and key management. It also covers denial-of-service protection, session authenticity, name resolution, process isolation and concealment and misdirection techniques.

@@ -1,0 +1,1 @@
+Maintenance requires organizations to schedule and document system maintenance, control the tools used, and approve and monitor nonlocal maintenance sessions. Maintenance personnel must be authorized and supervised, and organizations must obtain support and spare parts within defined response times.

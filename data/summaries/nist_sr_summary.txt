@@ -1,0 +1,1 @@
+Supply chain risk management requires organizations to develop a supply chain risk management plan and apply controls across the system life cycle. It covers provenance, supplier assessments, acquisition strategies, tamper resistance, inspection of components, authenticity checks and secure disposal.

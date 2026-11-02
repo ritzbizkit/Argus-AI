@@ -1,26 +1,16 @@
 """Fine-tune the synthesis model on the regulatory document/summary corpus.
 
 Usage:
-    python train.py [--epochs N] [--allow-tiny-dataset]
+    python train.py [--epochs N] [--processed-dir DIR] [--allow-tiny-dataset]
 
 The corpus in this repository is very small. Read the warning the script prints
 before treating any number it produces as a result.
 """
 
 import argparse
-import inspect
 import os
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
-
-from transformers import (
-    AutoModelForSeq2SeqLM,
-    Seq2SeqTrainer,
-    Seq2SeqTrainingArguments,
-)
-from torch.utils.data import Subset
-
-from argus_dataset import SecurityComplianceDataset
 
 MODEL_NAME = "facebook/bart-large-cnn"
 OUTPUT_DIR = "./argus_v2_bart"
@@ -30,11 +20,15 @@ OUTPUT_DIR = "./argus_v2_bart"
 MIN_PAIRS_FOR_MEANINGFUL_EVAL = 20
 
 
-def build_training_arguments(**kwargs) -> Seq2SeqTrainingArguments:
+def build_training_arguments(**kwargs):
     """Construct training arguments across transformers versions.
 
     `evaluation_strategy` was renamed to `eval_strategy` in transformers 4.46.
     """
+    import inspect
+
+    from transformers import Seq2SeqTrainingArguments
+
     strategy = kwargs.pop("eval_strategy")
     field = (
         "eval_strategy"
@@ -49,14 +43,26 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--epochs", type=int, default=5)
     parser.add_argument(
+        "--processed-dir",
+        default="data/sections",
+        help="Directory of source documents (default: the 35-section corpus).",
+    )
+    parser.add_argument("--summaries-dir", default="data/summaries")
+    parser.add_argument(
         "--allow-tiny-dataset",
         action="store_true",
         help="Train anyway when there are too few pairs for a meaningful eval split.",
     )
     args = parser.parse_args()
 
+    # Imported here so --help works without the model stack installed.
+    from torch.utils.data import Subset
+    from transformers import AutoModelForSeq2SeqLM, Seq2SeqTrainer
+
+    from argus_dataset import SecurityComplianceDataset
+
     dataset = SecurityComplianceDataset(
-        "data/processed", "data/summaries", model_name=MODEL_NAME
+        args.processed_dir, args.summaries_dir, model_name=MODEL_NAME
     )
     print(dataset.describe())
 

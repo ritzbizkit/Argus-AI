@@ -1,0 +1,1 @@
+PII processing and transparency requires organizations to establish authority for processing personally identifiable information and document the purposes. It governs consent mechanisms, privacy notices, system of records notices, handling of specific categories of sensitive information, and computer matching agreements.

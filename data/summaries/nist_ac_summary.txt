@@ -1,0 +1,1 @@
+Access control requires organizations to manage accounts, enforce authorized access and information flow, separate duties and apply least privilege. It also covers session controls, remote and wireless access, mobile devices, external systems, information sharing and publicly accessible content.

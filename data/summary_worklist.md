@@ -18,187 +18,187 @@ SUMMARY: HIPAA grants patients the right to access medical records within 30 day
 WORDS: 1,842
 COVERS: Art. 1 Subject-matter and objectives; Art. 2 Material scope; Art. 3 Territorial scope
 EXCERPT: CHAPTER I General provisions Article 1 Subject-matter and objectives 1. This Regulation lays down rules relating to the protection of natural persons with regard to the processing of personal data and rules relating to the free movement of personal data. 2. This Regulation protects fundamental rights and freedoms of natural persons and in particular their right to the protection of personal data. 3. The free movement of personal data within the Union shall be neither restricted nor prohibited for reasons connected with the protection of natural persons with regard to...
-SUMMARY:
+SUMMARY: The GDPR protects natural persons regarding personal data processing and the free movement of that data. These provisions define what processing falls within scope and extend the Regulation to controllers outside the Union who target or monitor people in it.
 
 ## gdpr_chii
 WORDS: 2,369
 COVERS: Art. 5 Principles relating to processing of personal data; Art. 6 Lawfulness of processing; Art. 7 Conditions for consent; Art. 9 Processing of special categories of personal data; Art. 11 Processing which does not require identification
 EXCERPT: CHAPTER II Principles Article 5 Principles relating to processing of personal data 1. Personal data shall be: (a) processed lawfully, fairly and in a transparent manner in relation to the data subject (lawfulness, fairness and transparency); (b) collected for specified, explicit and legitimate purposes and not further processed in a manner that is incompatible with those purposes; further processing for archiving purposes in the public interest, scientific or historical research purposes or statistical purposes shall, in accordance with Article 89(1), not be considered to be incompatible with the initial purposes...
-SUMMARY:
+SUMMARY: Processing must be lawful, fair, transparent, limited to specified purposes and no longer than necessary, with accuracy, integrity and accountability. A valid legal basis is required, consent must be freely given and demonstrable, and special categories of data are prohibited by default.
 
 ## gdpr_chiii
 WORDS: 4,241
 COVERS: Art. 15 Right of access by the data subject; Art. 17 Right to erasure (right to be forgotten); Art. 18 Right to restriction of processing; Art. 20 Right to data portability; Art. 21 Right to object; Art. 22 Automated individual decision-making, including profiling; Art. 23 Restrictions
 EXCERPT: CHAPTER III Rights of the data subject Section 1 Transparency and modalities Article 12 Transparent information, communication and modalities for the exercise of the rights of the data subject 1. The controller shall take appropriate measures to provide any information referred to in Articles 13 and 14 and any communication under Articles 15 to 22 and 34 relating to processing to the data subject in a concise, transparent, intelligible and easily accessible form, using clear and plain language, in particular for any information addressed specifically to a child. The information...
-SUMMARY:
+SUMMARY: Data subjects may access their personal data, have it rectified or erased, restrict or object to processing, and receive it in a portable format. They are also protected against decisions based solely on automated processing, subject to limited national restrictions.
 
 ## gdpr_chiv
 WORDS: 7,469
 COVERS: Art. 24 Responsibility of the controller; Art. 25 Data protection by design and by default; Art. 26 Joint controllers; Art. 28 Processor; Art. 30 Records of processing activities; Art. 32 Security of processing; Art. 33 Notification of a personal data breach to the supervisory authority; Art. 34 Communication of a personal data breach to the data subject; Art. 35 Data protection impact assessment; Art. 36 Prior consultation; Art. 37 Designation of the data protection officer; Art. 38 Position of the data protection officer (+5 more)
 EXCERPT: CHAPTER IV Controller and processor Section 1 General obligations Article 24 Responsibility of the controller 1. Taking into account the nature, scope, context and purposes of processing as well as the risks of varying likelihood and severity for the rights and freedoms of natural persons, the controller shall implement appropriate technical and organisational measures to ensure and to be able to demonstrate that processing is performed in accordance with this Regulation. Those measures shall be reviewed and updated where necessary. 2. Where proportionate in relation to processing activities, the measures...
-SUMMARY:
+SUMMARY: Controllers must implement data protection by design and by default, keep records of processing, and secure it appropriately. Breaches require notification to the supervisory authority within 72 hours, and high-risk processing requires impact assessments, prior consultation and, in some cases, a data protection officer.
 
 ## gdpr_chix
 WORDS: 1,152
 COVERS: Art. 85 Processing and freedom of expression and information; Art. 88 Processing in the context of employment; Art. 90 Obligations of secrecy; Art. 91 Existing data protection rules of churches and religious associations
 EXCERPT: CHAPTER IX Provisions relating to specific processing situations Article 85 Processing and freedom of expression and information 1. Member States shall by law reconcile the right to the protection of personal data pursuant to this Regulation with the right to freedom of expression and information, including processing for journalistic purposes and the purposes of academic, artistic or literary expression. 4.5.2016 L 119/83 Official Journal of the European Union EN 2. For processing carried out for journalistic purposes or the purpose of academic artistic or literary expression, Member States shall provide...
-SUMMARY:
+SUMMARY: Member States may reconcile data protection with freedom of expression and information, and set more specific rules for processing in employment. The chapter also preserves obligations of professional secrecy and existing data protection rules of churches and religious associations.
 
 ## gdpr_chv
 WORDS: 3,003
 COVERS: Art. 45 Transfers on the basis of an adequacy decision; Art. 46 Transfers subject to appropriate safeguards; Art. 47 Binding corporate rules; Art. 49 Derogations for specific situations
 EXCERPT: CHAPTER V Transfers of personal data to third countries or international organisations Article 44 General principle for transfers Any transfer of personal data which are undergoing processing or are intended for processing after transfer to a third country or to an international organisation shall take place only if, subject to the other provisions of this Regulation, the conditions laid down in this Chapter are complied with by the controller and processor, including for onward transfers of personal data from the third country or an international organisation to another third country...
-SUMMARY:
+SUMMARY: Personal data may be transferred outside the Union only where the destination ensures an adequate level of protection, or where appropriate safeguards such as standard clauses or binding corporate rules apply. Narrow derogations permit specific transfers without either.
 
 ## gdpr_chvi
 WORDS: 2,754
 COVERS: Art. 51 Supervisory authority; Art. 52 Independence; Art. 53 General conditions for the members of the supervisory authority; Art. 54 Rules on the establishment of the supervisory authority; Art. 55 Competence; Art. 56 Competence of the lead supervisory authority; Art. 57 Tasks; Art. 58 Powers
 EXCERPT: CHAPTER VI Independent supervisory authorities Section 1 Independent status Article 51 Supervisory authority 1. Each Member State shall provide for one or more independent public authorities to be responsible for monitoring the application of this Regulation, in order to protect the fundamental rights and freedoms of natural persons in relation to processing and to facilitate the free flow of personal data within the Union (supervisory authority). 2. Each supervisory authority shall contribute to the consistent application of this Regulation throughout the Union. For that purpose, the supervisory authorities shall cooperate...
-SUMMARY:
+SUMMARY: Each Member State must establish independent supervisory authorities, with guaranteed independence, defined membership conditions and territorial competence. The chapter sets out their investigative, corrective and advisory powers, and designates a lead authority for cross-border processing.
 
 ## gdpr_chvii
 WORDS: 5,186
 COVERS: Art. 61 Mutual assistance; Art. 62 Joint operations of supervisory authorities; Art. 64 Opinion of the Board; Art. 65 Dispute resolution by the Board; Art. 66 Urgency procedure; Art. 68 European Data Protection Board; Art. 69 Independence; Art. 70 Tasks of the Board; Art. 71 Reports; Art. 72 Procedure; Art. 73 Chair; Art. 74 Tasks of the Chair (+2 more)
 EXCERPT: CHAPTER VII Cooperation and consistency Section 1 Cooperation Article 60 Cooperation between the lead supervisory authority and the other supervisory authorities concerned 1. The lead supervisory authority shall cooperate with the other supervisory authorities concerned in accordance with this Article in an endeavour to reach consensus. The lead supervisory authority and the supervisory authorities concerned shall exchange all relevant information with each other. 2. The lead supervisory authority may request at any time other supervisory authorities concerned to provide mutual assistance pursuant to Article 61 and may conduct joint operations...
-SUMMARY:
+SUMMARY: Supervisory authorities must assist one another, run joint operations and follow a consistency mechanism for cross-border cases. It establishes the European Data Protection Board, defining its independence, tasks, chair, secretariat and procedures for opinions, dispute resolution and urgent action.
 
 ## gdpr_chviii
 WORDS: 2,104
 COVERS: Art. 77 Right to lodge a complaint with a supervisory authority; Art. 78 Right to an effective judicial remedy against a supervisory authority; Art. 79 Right to an effective judicial remedy against a controller or processor; Art. 80 Representation of data subjects; Art. 81 Suspension of proceedings; Art. 82 Right to compensation and liability; Art. 83 General conditions for imposing administrative fines; Art. 84 Penalties
 EXCERPT: CHAPTER VIII Remedies, liability and penalties Article 77 Right to lodge a complaint with a supervisory authority 1. Without prejudice to any other administrative or judicial remedy, every data subject shall have the right to lodge a complaint with a supervisory authority, in particular in the Member State of his or her habitual residence, place of work or place of the alleged infringement if the data subject considers that the processing of personal data relating to him or her infringes this Regulation. 2. The supervisory authority with which the complaint...
-SUMMARY:
+SUMMARY: Data subjects may lodge complaints with a supervisory authority, seek judicial remedies against authorities, controllers or processors, and claim compensation for damage. Supervisory authorities may impose administrative fines, with the chapter setting out the conditions and maximum amounts.
 
 ## gdpr_chx
 WORDS: 338
 COVERS: Art. 92 Exercise of the delegation; Art. 93 Committee procedure
 EXCERPT: CHAPTER X Delegated acts and implementing acts Article 92 Exercise of the delegation 1. The power to adopt delegated acts is conferred on the Commission subject to the conditions laid down in this Article. 4.5.2016 L 119/85 Official Journal of the European Union EN 2. The delegation of power referred to in Article 12(8) and Article 43(8) shall be conferred on the Commission for an indeterminate period of time from 24 May 2016. 3. The delegation of power referred to in Article 12(8) and Article 43(8) may be revoked at...
-SUMMARY:
+SUMMARY: The Commission may adopt delegated acts under conditions set out here, including the duration of the delegation and the right of Parliament and Council to object. Implementing acts follow the standard committee examination procedure.
 
 ## gdpr_chxi
 WORDS: 583
 COVERS: Art. 97 Commission reports; Art. 99 Entry into force and application
 EXCERPT: CHAPTER XI Final provisions Article 94 Repeal of Directive 95/46/EC 1. Directive 95/46/EC is repealed with effect from 25 May 2018. 2. References to the repealed Directive shall be construed as references to this Regulation. References to the Working Party on the Protection of Individuals with regard to the Processing of Personal Data established by Article 29 of Directive 95/46/EC shall be construed as references to the European Data Protection Board established by this Regulation. Article 95 Relationship with Directive 2002/58/EC This Regulation shall not impose additional obligations on natural...
-SUMMARY:
+SUMMARY: The Regulation repeals Directive 95/46/EC and requires the Commission to report periodically on its evaluation and review. It entered into force twenty days after publication and has applied directly across Member States since 25 May 2018.
 
 ## nist_ac
 WORDS: 19,017
 COVERS: AC-1 Policy And Procedures; AC-2 Account Management; AC-3 Access Enforcement; AC-4 Information Flow Enforcement; AC-5 Separation Of Duties; AC-6 Least Privilege; AC-7 Unsuccessful Logon Attempts; AC-8 System Use Notification; AC-9 Previous Logon Notification; AC-10 Concurrent Session Control; AC-11 Device Lock; AC-12 Session Termination (+11 more)
 EXCERPT: 3.1 ACCESS CONTROL Quick link to Access Control Summary Table AC-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] access control policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the access control policy and the associated access controls; b. Designate an [Assignment: organization-defined...
-SUMMARY:
+SUMMARY: Access control requires organizations to manage accounts, enforce authorized access and information flow, separate duties and apply least privilege. It also covers session controls, remote and wireless access, mobile devices, external systems, information sharing and publicly accessible content.
 
 ## nist_at
 WORDS: 2,546
 COVERS: AT-1 Policy And Procedures; AT-2 Literacy Training And Awareness; AT-3 Role-Based Training; AT-4 Training Records; AT-6 Training Feedback
 EXCERPT: 3.2 AWARENESS AND TRAINING Quick link to Awareness and Training Summary Table AT-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] awareness and training policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the awareness and training policy and the associated awareness and training...
-SUMMARY:
+SUMMARY: Awareness and training requires organizations to provide security and privacy literacy training to all users, role-based training for those with specific responsibilities, and training on recognizing insider threats and social engineering. Training records must be retained and feedback collected.
 
 ## nist_au
 WORDS: 7,685
 COVERS: AU-1 Policy And Procedures; AU-2 Event Logging; AU-3 Content Of Audit Records; AU-4 Audit Log Storage Capacity; AU-5 Response To Audit Logging Process Failures; AU-6 Audit Record Review, Analysis, And Reporting; AU-7 Audit Record Reduction And Report Generation; AU-8 Time Stamps; AU-9 Protection Of Audit Information; AU-10 Non-Repudiation; AU-11 Audit Record Retention; AU-12 Audit Record Generation (+3 more)
 EXCERPT: 3.3 AUDIT AND ACCOUNTABILITY Quick link to Audit and Accountability Summary Table AU-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] audit and accountability policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the audit and accountability policy and the associated audit and accountability...
-SUMMARY:
+SUMMARY: Audit and accountability requires organizations to define loggable events, generate audit records with sufficient content, and retain them with adequate storage capacity. Records must be protected, reviewed and analyzed for indications of inappropriate activity, with time stamps and non-repudiation support.
 
 ## nist_ca
 WORDS: 5,753
 COVERS: CA-1 Policy And Procedures; CA-2 Control Assessments; CA-3 Information Exchange; CA-5 Plan Of Action And Milestones; CA-6 Authorization; CA-7 Continuous Monitoring; CA-8 Penetration Testing; CA-9 Internal System Connections
 EXCERPT: 3.4 ASSESSMENT, AUTHORIZATION, AND MONITORING Quick link to Assessment, Authorization, and Monitoring Summary Table CA-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] assessment, authorization, and monitoring policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the assessment, authorization, and monitoring policy and the...
-SUMMARY:
+SUMMARY: Assessment, authorization and monitoring requires organizations to assess controls for effectiveness, document findings in plans of action and milestones, and authorize systems before operation. It also mandates continuous monitoring, penetration testing and agreements governing information exchange and internal connections.
 
 ## nist_cm
 WORDS: 8,159
 COVERS: CM-1 Policy And Procedures; CM-2 Baseline Configuration; CM-3 Configuration Change Control; CM-4 Impact Analyses; CM-5 Access Restrictions For Change; CM-6 Configuration Settings; CM-7 Least Functionality; CM-8 System Component Inventory; CM-9 Configuration Management Plan; CM-10 Software Usage Restrictions; CM-11 User-Installed Software; CM-12 Information Location (+2 more)
 EXCERPT: 3.5 CONFIGURATION MANAGEMENT Quick link to Configuration Management Summary Table CM-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] configuration management policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the configuration management policy and the associated configuration management controls; b. Designate an [Assignment:...
-SUMMARY:
+SUMMARY: Configuration management requires organizations to establish baseline configurations, control changes through a defined process, and analyze their security impact. It covers mandatory configuration settings, least functionality, component inventory, restrictions on user-installed software, and tracking where information is located.
 
 ## nist_cp
 WORDS: 6,577
 COVERS: CP-1 Policy And Procedures; CP-2 Contingency Plan; CP-3 Contingency Training; CP-4 Contingency Plan Testing; CP-6 Alternate Storage Site; CP-7 Alternate Processing Site; CP-8 Telecommunications Services; CP-9 System Backup; CP-10 System Recovery And Reconstitution; CP-11 Alternate Communications Protocols; CP-12 Safe Mode; CP-13 Alternative Security Mechanisms
 EXCERPT: 3.6 CONTINGENCY PLANNING Quick link to Contingency Planning Summary Table CP-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] contingency planning policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the contingency planning policy and the associated contingency planning controls; b. Designate an [Assignment:...
-SUMMARY:
+SUMMARY: Contingency planning requires organizations to develop, train on and test contingency plans covering essential missions. It mandates alternate storage and processing sites, telecommunications services, system backups, and recovery and reconstitution procedures that restore systems to a known state after disruption.
 
 ## nist_ia
 WORDS: 7,761
 COVERS: IA-1 Policy And Procedures; IA-2 Identification And Authentication (Organizational Users); IA-3 Device Identification And Authentication; IA-4 Identifier Management; IA-5 Authenticator Management; IA-6 Authentication Feedback; IA-7 Cryptographic Module Authentication; IA-8 Identification And Authentication (Non-Organizational Users); IA-9 Service Identification And Authentication; IA-10 Adaptive Authentication; IA-11 Re-Authentication; IA-12 Identity Proofing
 EXCERPT: 3.7 IDENTIFICATION AND AUTHENTICATION Quick link to Identification and Authentication Summary Table IA-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] identification and authentication policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the identification and authentication policy and the associated identification and authentication...
-SUMMARY:
+SUMMARY: Identification and authentication requires organizations to uniquely identify and authenticate users, devices and services before granting access. It governs identifier and authenticator management, multi-factor and cryptographic authentication, protection of authentication feedback, re-authentication conditions and identity proofing for enrollment.
 
 ## nist_ir
 WORDS: 5,230
 COVERS: IR-1 Policy And Procedures; IR-2 Incident Response Training; IR-3 Incident Response Testing; IR-4 Incident Handling; IR-5 Incident Monitoring; IR-6 Incident Reporting; IR-7 Incident Response Assistance; IR-8 Incident Response Plan; IR-9 Information Spillage Response
 EXCERPT: 3.8 INCIDENT RESPONSE Quick link to Incident Response Summary Table IR-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] incident response policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the incident response policy and the associated incident response controls; b. Designate an [Assignment:...
-SUMMARY:
+SUMMARY: Incident response requires organizations to maintain an incident response plan, train and test personnel against it, and handle incidents through preparation, detection, containment, eradication and recovery. Incidents must be tracked and reported, with assistance available to users and spillage addressed.
 
 ## nist_ma
 WORDS: 3,568
 COVERS: MA-1 Policy And Procedures; MA-2 Controlled Maintenance; MA-3 Maintenance Tools; MA-4 Nonlocal Maintenance; MA-5 Maintenance Personnel; MA-6 Timely Maintenance; MA-7 Field Maintenance
 EXCERPT: 3.9 MAINTENANCE Quick link to Maintenance Summary Table MA-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] maintenance policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the maintenance policy and the associated maintenance controls; b. Designate an [Assignment: organization-defined official] to manage the...
-SUMMARY:
+SUMMARY: Maintenance requires organizations to schedule and document system maintenance, control the tools used, and approve and monitor nonlocal maintenance sessions. Maintenance personnel must be authorized and supervised, and organizations must obtain support and spare parts within defined response times.
 
 ## nist_mp
 WORDS: 3,246
 COVERS: MP-1 Policy And Procedures; MP-2 Media Access; MP-3 Media Marking; MP-4 Media Storage; MP-5 Media Transport; MP-6 Media Sanitization; MP-7 Media Use; MP-8 Media Downgrading
 EXCERPT: 3.10 MEDIA PROTECTION Quick link to Media Protection Summary Table MP-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] media protection policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the media protection policy and the associated media protection controls; b. Designate an [Assignment:...
-SUMMARY:
+SUMMARY: Media protection requires organizations to restrict access to digital and non-digital media, mark it with distribution limitations, and store it securely. It governs transport, permitted use, downgrading, and sanitization of media before disposal or release from organizational control.
 
 ## nist_pe
 WORDS: 5,811
 COVERS: PE-1 Policy And Procedures; PE-2 Physical Access Authorizations; PE-3 Physical Access Control; PE-4 Access Control For Transmission; PE-5 Access Control For Output Devices; PE-6 Monitoring Physical Access; PE-8 Visitor Access Records; PE-9 Power Equipment And Cabling; PE-10 Emergency Shutoff; PE-11 Emergency Power; PE-12 Emergency Lighting; PE-13 Fire Protection (+10 more)
 EXCERPT: 3.11 PHYSICAL AND ENVIRONMENTAL PROTECTION Quick link to Physical and Environmental Protection Summary Table PE-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] physical and environmental protection policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the physical and environmental protection policy and the...
-SUMMARY:
+SUMMARY: Physical and environmental protection requires organizations to authorize, control and monitor physical access to facilities and output devices. It covers power equipment, emergency shutoff, lighting and power, fire protection, temperature and water damage controls, alternate work sites and component location.
 
 ## nist_pl
 WORDS: 3,932
 COVERS: PL-1 Policy And Procedures; PL-2 System Security And Privacy Plans; PL-4 Rules Of Behavior; PL-7 Concept Of Operations; PL-8 Security And Privacy Architectures; PL-9 Central Management; PL-10 Baseline Selection; PL-11 Baseline Tailoring
 EXCERPT: 3.12 PLANNING Quick link to Planning Summary Table PL-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] planning policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the planning policy and the associated planning controls; b. Designate an [Assignment: organization-defined official] to manage the...
-SUMMARY:
+SUMMARY: Planning requires organizations to develop and maintain system security and privacy plans, establish rules of behavior for users, and define a concept of operations. It also covers security and privacy architectures, central management, and selecting and tailoring control baselines.
 
 ## nist_pm
 WORDS: 8,162
 COVERS: PM-1 Information Security Program Plan; PM-2 Information Security Program Leadership Role; PM-3 Information Security And Privacy Resources; PM-4 Plan Of Action And Milestones Process; PM-5 System Inventory; PM-6 Measures Of Performance; PM-7 Enterprise Architecture; PM-8 Critical Infrastructure Plan; PM-9 Risk Management Strategy; PM-10 Authorization Process; PM-11 Mission And Business Process Definition; PM-12 Insider Threat Program (+19 more)
 EXCERPT: 3.13 PROGRAM MANAGEMENT Quick link to Program Management Summary Table PM-1 INFORMATION SECURITY PROGRAM PLAN Control: a. Develop and disseminate an organization-wide information security program plan that: 1. Provides an overview of the requirements for the security program and a description of the security program management controls and common controls in place or planned for meeting those requirements; 2. Includes the identification and assignment of roles, responsibilities, management commitment, coordination among organizational entities, and compliance; 3. Reflects the coordination among organizational entities responsible for information security; and 4. Is approved...
-SUMMARY:
+SUMMARY: Program management establishes organization-wide security and privacy programs, with designated leadership, resources, plans and measures of performance. It covers enterprise architecture, risk management strategy, insider threat and workforce programs, privacy program obligations, data governance bodies, complaint management and continuous monitoring strategy.
 
 ## nist_ps
 WORDS: 2,507
 COVERS: PS-1 Policy And Procedures; PS-2 Position Risk Designation; PS-3 Personnel Screening; PS-4 Personnel Termination; PS-5 Personnel Transfer; PS-6 Access Agreements; PS-7 External Personnel Security; PS-8 Personnel Sanctions; PS-9 Position Descriptions
 EXCERPT: 3.14 PERSONNEL SECURITY Quick link to Personnel Security Summary Table PS-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] personnel security policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the personnel security policy and the associated personnel security controls; b. Designate an [Assignment:...
-SUMMARY:
+SUMMARY: Personnel security requires organizations to designate risk levels for positions, screen individuals before granting access, and revoke access promptly on termination or transfer. It also mandates access agreements, security requirements for external personnel, and sanctions for policy violations.
 
 ## nist_pt
 WORDS: 4,100
 COVERS: PT-1 Policy And Procedures; PT-2 Authority To Process Personally Identifiable Information; PT-3 Personally Identifiable Information Processing Purposes; PT-4 Consent; PT-5 Privacy Notice; PT-6 System Of Records Notice; PT-7 Specific Categories Of Personally Identifiable Information; PT-8 Computer Matching Requirements
 EXCERPT: 3.15 PERSONALLY IDENTIFIABLE INFORMATION PROCESSING AND TRANSPARENCY Quick link to Personally Identifiable Information Processing and Transparency table PT-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] personally identifiable information processing and transparency policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the personally identifiable...
-SUMMARY:
+SUMMARY: PII processing and transparency requires organizations to establish authority for processing personally identifiable information and document the purposes. It governs consent mechanisms, privacy notices, system of records notices, handling of specific categories of sensitive information, and computer matching agreements.
 
 ## nist_ra
 WORDS: 4,963
 COVERS: RA-1 Policy And Procedures; RA-2 Security Categorization; RA-3 Risk Assessment; RA-5 Vulnerability Monitoring And Scanning; RA-6 Technical Surveillance Countermeasures Survey; RA-7 Risk Response; RA-8 Privacy Impact Assessments; RA-9 Criticality Analysis; RA-10 Threat Hunting
 EXCERPT: 3.16 RISK ASSESSMENT Quick link to Risk Assessment Summary Table RA-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] risk assessment policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the risk assessment policy and the associated risk assessment controls; b. Designate an [Assignment:...
-SUMMARY:
+SUMMARY: Risk assessment requires organizations to categorize systems by impact, assess risk to operations and individuals, and respond to findings. It mandates vulnerability monitoring and scanning, privacy impact assessments, criticality analysis of components, and threat hunting to detect undiscovered adversary activity.
 
 ## nist_sa
 WORDS: 21,377
 COVERS: SA-1 Policy And Procedures; SA-2 Allocation Of Resources; SA-3 System Development Life Cycle; SA-4 Acquisition Process; SA-5 System Documentation; SA-8 Security And Privacy Engineering Principles; SA-9 External System Services; SA-10 Developer Configuration Management; SA-11 Developer Testing And Evaluation; SA-15 Development Process, Standards, And Tools; SA-16 Developer-Provided Training; SA-17 Developer Security And Privacy Architecture And Design (+4 more)
 EXCERPT: 3.17 SYSTEM AND SERVICES ACQUISITION Quick link to System and Services Acquisition Summary Table SA-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] system and services acquisition policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the system and services acquisition policy and the...
-SUMMARY:
+SUMMARY: System and services acquisition requires organizations to allocate resources, apply a system development life cycle, and include security and privacy requirements in acquisition contracts. It imposes obligations on developers covering configuration management, testing, architecture, screening, training and handling of unsupported components.
 
 ## nist_sc
 WORDS: 16,787
 COVERS: SC-1 Policy And Procedures; SC-2 Separation Of System And User Functionality; SC-3 Security Function Isolation; SC-4 Information In Shared System Resources; SC-5 Denial-Of-Service Protection; SC-6 Resource Availability; SC-7 Boundary Protection; SC-8 Transmission Confidentiality And Integrity; SC-10 Network Disconnect; SC-11 Trusted Path; SC-12 Cryptographic Key Establishment And Management; SC-13 Cryptographic Protection (+35 more)
 EXCERPT: 3.18 SYSTEM AND COMMUNICATIONS PROTECTION Quick link to System and Communications Protection Summary Table SC-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] system and communications protection policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the system and communications protection policy and the...
-SUMMARY:
+SUMMARY: System and communications protection requires organizations to isolate security functions, protect system boundaries, and secure data in transit and at rest through cryptography and key management. It also covers denial-of-service protection, session authenticity, name resolution, process isolation and concealment and misdirection techniques.
 
 ## nist_si
 WORDS: 13,469
 COVERS: SI-1 Policy And Procedures; SI-2 Flaw Remediation; SI-3 Malicious Code Protection; SI-4 System Monitoring; SI-5 Security Alerts, Advisories, And Directives; SI-6 Security And Privacy Function Verification; SI-7 Software, Firmware, And Information Integrity; SI-8 Spam Protection; SI-10 Information Input Validation; SI-11 Error Handling; SI-12 Information Management And Retention; SI-13 Predictable Failure Prevention (+10 more)
 EXCERPT: 3.19 SYSTEM AND INFORMATION INTEGRITY Quick link to System and Information Integrity Summary Table SI-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] system and information integrity policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the system and information integrity policy and the...
-SUMMARY:
+SUMMARY: System and information integrity requires organizations to remediate flaws, protect against malicious code, and monitor systems for attacks and unauthorized activity. It covers security alerts, software and information integrity verification, input validation, error handling, memory protection, de-identification and information retention.
 
 ## nist_sr
 WORDS: 5,043
 COVERS: SR-1 Policy And Procedures; SR-2 Supply Chain Risk Management Plan; SR-3 Supply Chain Controls And Processes; SR-4 Provenance; SR-5 Acquisition Strategies, Tools, And Methods; SR-6 Supplier Assessments And Reviews; SR-7 Supply Chain Operations Security; SR-8 Notification Agreements; SR-9 Tamper Resistance And Detection; SR-10 Inspection Of Systems Or Components; SR-11 Component Authenticity; SR-12 Component Disposal
 EXCERPT: 3.20 SUPPLY CHAIN RISK MANAGEMENT Quick link to Supply Chain Risk Management Summary Table SR-1 POLICY AND PROCEDURES Control: a. Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]: 1. [Selection (one or more): Organization-level; Mission/business process-level; Systemlevel] supply chain risk management policy that: (a) Addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and (b) Is consistent with applicable laws, executive orders, directives, regulations, policies, standards, and guidelines; and 2. Procedures to facilitate the implementation of the supply chain risk management policy and the...
-SUMMARY:
+SUMMARY: Supply chain risk management requires organizations to develop a supply chain risk management plan and apply controls across the system life cycle. It covers provenance, supplier assessments, acquisition strategies, tamper resistance, inspection of components, authenticity checks and secure disposal.
 
 ## ocr-letter-hipaa-privacy-rule-and-parental-access-to-minor-childrens-medical-records
 WORDS: 1,452

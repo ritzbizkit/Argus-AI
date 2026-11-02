@@ -1,0 +1,1 @@
+System and information integrity requires organizations to remediate flaws, protect against malicious code, and monitor systems for attacks and unauthorized activity. It covers security alerts, software and information integrity verification, input validation, error handling, memory protection, de-identification and information retention.

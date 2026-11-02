@@ -1,0 +1,1 @@
+Configuration management requires organizations to establish baseline configurations, control changes through a defined process, and analyze their security impact. It covers mandatory configuration settings, least functionality, component inventory, restrictions on user-installed software, and tracking where information is located.

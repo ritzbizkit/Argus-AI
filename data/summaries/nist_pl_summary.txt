@@ -1,0 +1,1 @@
+Planning requires organizations to develop and maintain system security and privacy plans, establish rules of behavior for users, and define a concept of operations. It also covers security and privacy architectures, central management, and selecting and tailoring control baselines.

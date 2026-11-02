@@ -1,0 +1,1 @@
+Risk assessment requires organizations to categorize systems by impact, assess risk to operations and individuals, and respond to findings. It mandates vulnerability monitoring and scanning, privacy impact assessments, criticality analysis of components, and threat hunting to detect undiscovered adversary activity.

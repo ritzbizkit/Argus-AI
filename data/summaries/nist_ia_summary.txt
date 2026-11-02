@@ -1,0 +1,1 @@
+Identification and authentication requires organizations to uniquely identify and authenticate users, devices and services before granting access. It governs identifier and authenticator management, multi-factor and cryptographic authentication, protection of authentication feedback, re-authentication conditions and identity proofing for enrollment.

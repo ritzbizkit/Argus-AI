@@ -1,0 +1,1 @@
+Controllers must implement data protection by design and by default, keep records of processing, and secure it appropriately. Breaches require notification to the supervisory authority within 72 hours, and high-risk processing requires impact assessments, prior consultation and, in some cases, a data protection officer.

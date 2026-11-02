@@ -1,0 +1,1 @@
+Assessment, authorization and monitoring requires organizations to assess controls for effectiveness, document findings in plans of action and milestones, and authorize systems before operation. It also mandates continuous monitoring, penetration testing and agreements governing information exchange and internal connections.

@@ -1,0 +1,1 @@
+Incident response requires organizations to maintain an incident response plan, train and test personnel against it, and handle incidents through preparation, detection, containment, eradication and recovery. Incidents must be tracked and reported, with assistance available to users and spillage addressed.

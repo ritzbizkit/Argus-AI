@@ -1,0 +1,1 @@
+Contingency planning requires organizations to develop, train on and test contingency plans covering essential missions. It mandates alternate storage and processing sites, telecommunications services, system backups, and recovery and reconstitution procedures that restore systems to a known state after disruption.

@@ -1,0 +1,1 @@
+System and services acquisition requires organizations to allocate resources, apply a system development life cycle, and include security and privacy requirements in acquisition contracts. It imposes obligations on developers covering configuration management, testing, architecture, screening, training and handling of unsupported components.
