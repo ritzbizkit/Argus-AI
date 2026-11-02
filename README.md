@@ -1,37 +1,149 @@
-# Argus AI: Deterministic Security Compliance Engine
+# Argus AI — Local Policy Compliance Auditor
 
-## Project Description
-Argus AI is a multi-agent orchestration framework designed to eliminate hallucination in generative cybersecurity auditing. By utilizing a Directed Acyclic Graph (DAG) state manager, the system bounds generative synthesis within deterministic, mathematical semantic entailment loops. 
+Argus AI reads a security policy document and reports, control by control,
+whether the document provides evidence for the obligations expected in its
+regulatory domain — showing the passage that supports each match, so a reviewer
+can check the result rather than take it on trust.
 
-The pipeline ingests enterprise regulatory documents and executes through sequential nodes (Triage, Semantic Verification, Synthesis, and Remediation). The architecture is designed for 100% local inference, ensuring air-gapped data privacy for sensitive corporate network topologies, achieving end-to-end execution in ~4.9 seconds on an RTX 4080.
+It runs entirely on local inference. That constraint shaped the design: the
+intended users audit sensitive network topologies and cannot send policy text to
+a hosted model.
 
-## Data Source
-The intelligence of the Argus AI system relies on a hybrid data pipeline processed via scripts in our `/src` directory:
-* **Pre-Trained Base Corpuses:** Node 1 leverages the MNLI dataset (433,000+ sentence pairs) for zero-shot routing. Node 2 utilizes a native training corpus of over 1 billion sentence pairs for semantic vectorization.
-* **Custom Fine-Tuning Dataset:** The Node 3 generative model (`argus_v2_bart`) was fine-tuned on a custom, curated corpus of open-source regulatory documentation (NIST SP 800-53, GDPR legal text, and HIPAA safeguard guidelines) paired with synthetic edge-case summaries. 
+Hosted demo on public base models:
+**[huggingface.co/spaces/rittude/Argus-AI](https://huggingface.co/spaces/rittude/Argus-AI)**
 
-## Project Structure
-* `app.py`: The main Streamlit dashboard and DAG orchestration engine.
-* `src/`: Contains auxiliary scripts for data extraction (`extract_text.py`), text normalization (`clean_text.py`), and dataset preparation (`argus_dataset.py`).
-* `train.py`: The training loop used to fine-tune the custom generative models.
-* `argus_v1/` & `argus_v2_bart/`: The compiled, custom fine-tuned model weights.
-* `notebooks/`: Jupyter notebooks used during the research and testing phase.
+## How it works
 
-## Packages Required
-The following libraries are required to run the local inference engine:
-* `streamlit`
-* `torch`
-* `transformers`
-* `sentence-transformers`
-* `pandas`
-* `PyMuPDF` (imported as `fitz`)
+Upload a policy PDF and four stages run in sequence:
 
-## Instructions on How to Run the Code
-1. Clone this repository to your local machine.
-2. Open your terminal and navigate to the root directory of the project.
-3. Install the required dependencies by running:
-   `pip install streamlit torch transformers sentence-transformers pandas PyMuPDF`
-4. Launch the application dashboard by running:
-   `streamlit run app.py`
+| Stage | What it does | How |
+| --- | --- | --- |
+| 1. Triage | Picks which regulatory domain the document belongs to | Zero-shot classification (`facebook/bart-large-mnli`) |
+| 2. Audit | Scores each expected control against the document and extracts the passage that best supports it | Bi-encoder cosine similarity (`all-MiniLM-L6-v2`), threshold 0.50 |
+| 3. Synthesis | Writes an executive summary of the findings | Seq2seq generation, streamed to the UI |
+| 4. Remediation | Returns the policy text that should be added for each control that failed | Lookup against a fixed template per control |
 
-*(Note: A lightweight cloud demo utilizing base models is also available at: https://huggingface.co/spaces/rittude/Argus-AI)*
+Stage 2 runs before stage 3 deliberately: the summary is written against
+controls already matched to specific passages, rather than the model being asked
+to judge compliance itself.
+
+Measured end to end at roughly 4.9 seconds on an RTX 4080.
+
+## Scope and limitations
+
+What this prototype does and does not do:
+
+- **The control set is hand-written, not parsed from the standards.** Twelve
+  control objectives — four each for GDPR, HIPAA and NIST — are defined in
+  `app.py`. Documents are checked against those twelve statements, not against
+  the full text of NIST SP 800-53, GDPR or HIPAA.
+- **Stage 4 is a lookup, not generation.** Remediation text is pre-written per
+  control and returned verbatim.
+- **Matching is semantic similarity, not entailment.** A high cosine score means
+  a passage is topically close to a control statement. It is not proof the
+  policy satisfies that control, and the 0.50 threshold has not been calibrated
+  against labelled data.
+- **The stages run in a fixed linear sequence.** There is no branching or
+  conditional routing.
+- **The fine-tuning corpus is five documents.** See *Corpus* below.
+- Only the first five pages of an uploaded PDF are read.
+
+## Running it
+
+```bash
+git clone https://github.com/ritzbizkit/Argus-AI
+cd Argus-AI
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+That works from a fresh clone. The three models are pulled from Hugging Face on
+first run (several GB; expect a wait).
+
+### The fine-tuned synthesis checkpoint
+
+`train.py` produces `argus_v2_bart/`, which `.gitignore` excludes because the
+weights exceed GitHub's file size limit. They are not distributed here.
+
+When the directory is absent, stage 3 falls back to `facebook/bart-large-cnn`
+and the app shows a notice. Every other stage is unaffected; only the wording of
+the summary changes. To use a checkpoint, place it at `argus_v2_bart/` in the
+project root — it is picked up on the next launch.
+
+## Corpus
+
+```
+data/raw/         source regulatory PDFs
+data/processed/   extracted and normalised text  (extract_text.py → clean_text.py)
+data/summaries/   reference summaries
+```
+
+Rebuild with:
+
+```bash
+python extract_text.py   # data/raw → data/processed
+python clean_text.py     # normalise data/processed in place
+```
+
+**Current state: five usable document/summary pairs.** `data/raw/` contains
+`NIST.SP.800-53r5.pdf` and `data/summaries/` has a summary for it, but
+`extract_text.py` has not produced text for it, so there is no NIST pair — which
+means NIST SP 800-53 is **not** currently represented in the fine-tuning corpus,
+despite being the largest source document. `corpus.py` reports this on every
+training and evaluation run rather than dropping it silently.
+
+Five pairs is far too few to fine-tune a model of this size and get a result
+that generalises. `train.py` refuses to run below twenty pairs unless passed
+`--allow-tiny-dataset`, and prints a warning when it does.
+
+## Evaluation
+
+`evaluate.py` scores summarisation against the reference summaries with ROUGE,
+on the same documents for every system, so results are comparable.
+
+```bash
+python evaluate.py                       # lead-3 extractive baseline
+python evaluate.py --system model        # ./argus_v2_bart
+python evaluate.py --system model --model-path facebook/bart-large-cnn
+```
+
+Lead-3 extractive baseline, n = 5:
+
+| System | ROUGE-1 | ROUGE-2 | ROUGE-L |
+| --- | --- | --- | --- |
+| Lead-3 baseline | 0.2077 | 0.0509 | 0.1340 |
+
+Any summarisation model is only worth using if it beats this. At n = 5 the
+figure is indicative, not a result.
+
+## Repository layout
+
+| Path | Purpose |
+| --- | --- |
+| `app.py` | Streamlit app and pipeline orchestration |
+| `extract_text.py` | PDF → text, `data/raw` → `data/processed` |
+| `clean_text.py` | Normalise the extracted corpus in place |
+| `text_processing.py` | Cleaning, normalisation and chunking helpers |
+| `corpus.py` | Pairs documents with summaries; reports unpaired files |
+| `argus_dataset.py` | Torch dataset over those pairs |
+| `train.py` | Fine-tuning loop for the synthesis model |
+| `evaluate.py` | ROUGE scoring for the baseline and a checkpoint |
+| `baseline_lead3.py` | Prints baseline summaries (scoring lives in `evaluate.py`) |
+| `tests/` | Unit tests for the text, corpus and baseline layers |
+
+## Development
+
+```bash
+pip install -r requirements-dev.txt
+pytest tests -v
+```
+
+Tests, the baseline evaluation and a compile check run on every push via GitHub
+Actions (`.github/workflows/ci.yml`).
+
+## Context
+
+Built for CSE398 Deep and Generative Learning at Lehigh University.
+
+Generative AI was used to brainstorm test cases for the semantic validation
+loops.
