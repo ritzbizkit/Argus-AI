@@ -1,41 +1,61 @@
 import os
+
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
-import torch
 from torch.utils.data import Dataset
 from transformers import AutoTokenizer
 
+from corpus import load_corpus
+
+
 class SecurityComplianceDataset(Dataset):
-    def __init__(self, processed_dir, summaries_dir, model_name="facebook/bart-large-cnn", max_input_length=1024, max_target_length=128):
-        self.processed_dir = processed_dir
-        self.summaries_dir = summaries_dir
+    """Document/summary pairs for fine-tuning the synthesis model.
+
+    Pairing is delegated to `corpus.load_corpus`, which also reports files that
+    are unpaired on either side — a summary with no processed document usually
+    means `extract_text.py` produced no text for that PDF, which quietly shrinks
+    the training set.
+    """
+
+    def __init__(
+        self,
+        processed_dir,
+        summaries_dir,
+        model_name="facebook/bart-large-cnn",
+        max_input_length=1024,
+        max_target_length=128,
+    ):
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.max_input_length = max_input_length
         self.max_target_length = max_target_length
-        self.filenames = [f for f in os.listdir(processed_dir) if f.endswith('.txt')]
+
+        self.corpus = load_corpus(processed_dir, summaries_dir)
+        self.pairs = self.corpus.pairs
+
+        if not self.pairs:
+            raise RuntimeError(
+                f"No document/summary pairs found between {processed_dir} "
+                f"and {summaries_dir}."
+            )
+
+    def describe(self) -> str:
+        return self.corpus.describe()
 
     def __len__(self):
-        return len(self.filenames)
+        return len(self.pairs)
 
     def __getitem__(self, idx):
-        filename = self.filenames[idx]
-        input_path = os.path.join(self.processed_dir, filename)
-        
-        summary_filename = filename.replace('.txt', '_summary.txt')
-        target_path = os.path.join(self.summaries_dir, summary_filename)
+        input_path, target_path = self.pairs[idx]
 
-        with open(input_path, 'r', encoding='utf-8') as f:
-            source_text = f.read() # Notice we removed the "summarize:" prefix!
-            
-        with open(target_path, 'r', encoding='utf-8') as f:
-            target_text = f.read()
+        source_text = input_path.read_text(encoding="utf-8")
+        target_text = target_path.read_text(encoding="utf-8")
 
         source_encoding = self.tokenizer(
             source_text,
             max_length=self.max_input_length,
             padding="max_length",
             truncation=True,
-            return_tensors="pt"
+            return_tensors="pt",
         )
 
         target_encoding = self.tokenizer(
@@ -43,11 +63,11 @@ class SecurityComplianceDataset(Dataset):
             max_length=self.max_target_length,
             padding="max_length",
             truncation=True,
-            return_tensors="pt"
+            return_tensors="pt",
         )
 
         return {
             "input_ids": source_encoding["input_ids"].flatten(),
             "attention_mask": source_encoding["attention_mask"].flatten(),
-            "labels": target_encoding["input_ids"].flatten()
+            "labels": target_encoding["input_ids"].flatten(),
         }
