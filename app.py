@@ -6,30 +6,42 @@ import streamlit as st
 import torch
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, pipeline, TextIteratorStreamer
 from sentence_transformers import SentenceTransformer, util
-import fitz 
-import re
+import fitz
 import time
 import threading
+from pathlib import Path
+
 import pandas as pd
+
+from text_processing import chunk_text, clean_pdf_text
 
 st.set_page_config(page_title="Argus AI Command Center", layout="wide")
 
+# The fine-tuned synthesis checkpoint is produced by train.py and excluded from
+# version control by .gitignore. When it is absent the stage falls back to the
+# public base checkpoint so a fresh clone still runs.
+SYNTHESIS_MODEL_PATH = Path("argus_v2_bart")
+FALLBACK_SYNTHESIS_MODEL = "facebook/bart-large-cnn"
+
+
 @st.cache_resource
 def load_models():
-    # Agent 1: Triage (Zero-Shot)
+    # Stage 1: Triage (zero-shot classification)
     classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
-    
-    # Agent 2: Semantic Auditor (Dual-Encoder)
-    semantic_model = SentenceTransformer('all-MiniLM-L6-v2')
-    
-    # Agent 3: Synthesis (Argus Custom Model)
-    model_path = "./argus_v2_bart"
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_path)
-    
-    return classifier, semantic_model, tokenizer, model
 
-classifier, semantic_model, tokenizer, model = load_models()
+    # Stage 2: Semantic auditor (bi-encoder)
+    semantic_model = SentenceTransformer("all-MiniLM-L6-v2")
+
+    # Stage 3: Synthesis
+    using_finetuned = (SYNTHESIS_MODEL_PATH / "config.json").is_file()
+    source = str(SYNTHESIS_MODEL_PATH) if using_finetuned else FALLBACK_SYNTHESIS_MODEL
+    tokenizer = AutoTokenizer.from_pretrained(source)
+    model = AutoModelForSeq2SeqLM.from_pretrained(source)
+
+    return classifier, semantic_model, tokenizer, model, using_finetuned
+
+
+classifier, semantic_model, tokenizer, model, using_finetuned = load_models()
 
 # Security Knowledge Base
 COMPLIANCE_REQUIREMENTS = {
@@ -53,8 +65,9 @@ COMPLIANCE_REQUIREMENTS = {
     ]
 }
 
-# Remediation Intelligence Database
-REMEDIATION_INTELLIGENCE = {
+# Pre-written remediation text, keyed by control objective. Fixed templates,
+# not model output.
+REMEDIATION_TEMPLATES = {
     "Requires strong encryption for data at rest": "All sensitive data repositories must implement AES-256 encryption at rest to prevent unauthorised exfiltration.",
     "Explicit user consent mechanisms": "Data collection interfaces must require explicit, opt-in consent from the user, with clear provisions for withdrawal.",
     "Right to be forgotten protocol": "A formalised protocol must be established to purge user data from all operational databases and backups within 30 days of request.",
@@ -69,29 +82,21 @@ REMEDIATION_INTELLIGENCE = {
     "Continuous monitoring systems": "Network perimeters and internal endpoints must be subjected to 24/7 continuous monitoring via SIEM solutions."
 }
 
-def clean_pdf_text(text):
-    text = re.sub(r'(OFFICE FOR CIVIL RIGHTS)+', '', text)
-    return re.sub(r'\s+', ' ', text).strip()
-
-def chunk_text(text, chunk_size=150):
-    words = text.split()
-    return [' '.join(words[i:i + chunk_size]) for i in range(0, len(words), chunk_size)]
-
-# --- DAG ORCHESTRATION ENGINE ---
-class DAGOrchestrator:
+# --- PIPELINE ORCHESTRATION ---
+class PipelineOrchestrator:
     def __init__(self):
         self.state = {}
         
     def execute_node_1_triage(self, text, ui_element):
-        ui_element.info("Node 1 (Triage): Executing Zero-Shot Classification...")
+        ui_element.info("Stage 1 (Triage): classifying regulatory domain...")
         categories = list(COMPLIANCE_REQUIREMENTS.keys())
         classification = classifier(text[:2000], categories, multi_label=False)
         self.state['domain'] = classification['labels'][0]
         time.sleep(0.5)
-        ui_element.success(f"Node 1 Complete. Domain locked: **{self.state['domain']}**")
+        ui_element.success(f"Stage 1 complete. Domain: **{self.state['domain']}**")
 
     def execute_node_2_semantic_audit(self, text, ui_element):
-        ui_element.info("Node 2 (Auditor): Computing Semantic Entailment Vectors...")
+        ui_element.info("Stage 2 (Auditor): scoring controls against the document...")
         domain = self.state['domain']
         required_controls = COMPLIANCE_REQUIREMENTS[domain]
         
@@ -126,23 +131,31 @@ class DAGOrchestrator:
         time.sleep(0.5)
 
 # --- UI Layout ---
-st.title("Argus AI: DAG Orchestration Engine")
-st.markdown("Upload a policy document to trigger the autonomous, semantically-aware compliance audit.")
+st.title("Argus AI: Policy Compliance Auditor")
+st.markdown("Upload a policy document to run the compliance audit.")
+
+if not using_finetuned:
+    st.warning(
+        f"Running on the public `{FALLBACK_SYNTHESIS_MODEL}` checkpoint: no fine-tuned "
+        f"synthesis model was found at `{SYNTHESIS_MODEL_PATH}/`. Summary wording will "
+        "differ from the reported results; every other stage is unaffected. "
+        "See the README to train or supply a checkpoint."
+    )
 
 with st.sidebar:
-    st.header("DAG Architecture")
+    st.header("Pipeline")
     
-    st.markdown("**Node 1:** Triage Router (MNLI)")
+    st.markdown("**Stage 1:** Triage Router (MNLI)")
     st.caption("Zero-shot classification to autonomously determine the regulatory domain.")
     
-    st.markdown("**Node 2:** Semantic Entailment (MiniLM)")
-    st.caption("Dual-encoder verification with RAG chunk extraction.")
+    st.markdown("**Stage 2:** Semantic Similarity (MiniLM)")
+    st.caption("Bi-encoder scoring with supporting-chunk extraction.")
     
-    st.markdown("**Node 3:** Synthesis Stream (BART)")
-    st.caption("Fine-tuned generative model synthesising an executive summary.")
-    
-    st.markdown("**Node 4:** Remediation Agent")
-    st.caption("Drafts compliant policy patches for discovered vulnerabilities.")
+    st.markdown("**Stage 3:** Synthesis (BART)")
+    st.caption("Generative model synthesising an executive summary.")
+
+    st.markdown("**Stage 4:** Remediation Lookup")
+    st.caption("Returns the pre-written policy text for each failed control.")
     
     st.markdown("**Course:** CSE398 Deep and Generative learning Project")
     st.divider()
@@ -156,17 +169,17 @@ if uploaded_file is not None:
         raw_text = ""
         for page in doc[:5]:
             raw_text += page.get_text()
-        clean_text = clean_pdf_text(raw_text)
+        document_text = clean_pdf_text(raw_text)
         
     st.success("PDF Extracted Successfully!")
 
-    if st.button("Initialise DAG Pipeline", type="primary"):
+    if st.button("Run Audit Pipeline", type="primary"):
         
-        orchestrator = DAGOrchestrator()
+        orchestrator = PipelineOrchestrator()
         terminal = st.empty()
         
-        orchestrator.execute_node_1_triage(clean_text, terminal)
-        orchestrator.execute_node_2_semantic_audit(clean_text, terminal)
+        orchestrator.execute_node_1_triage(document_text, terminal)
+        orchestrator.execute_node_2_semantic_audit(document_text, terminal)
         
         domain = orchestrator.state['domain']
         found_controls = orchestrator.state['found_controls']
@@ -179,11 +192,11 @@ if uploaded_file is not None:
         col1, col2 = st.columns([1, 1])
         
         with col1:
-            st.subheader("Node 3: Executive Synthesis")
+            st.subheader("Stage 3: Executive Synthesis")
             st.caption("Live streaming generative summary based on established context.")
             summary_placeholder = st.empty()
             
-            input_text = f"Context: {domain}. {clean_text}"
+            input_text = f"Context: {domain}. {document_text}"
             inputs = tokenizer(input_text, max_length=1024, truncation=True, return_tensors="pt")
             
             streamer = TextIteratorStreamer(tokenizer, skip_prompt=True, skip_special_tokens=True)
@@ -208,17 +221,17 @@ if uploaded_file is not None:
             
             summary_placeholder.info(summary)
             
-            st.subheader("Node 4: Automated Policy Remediation")
-            st.caption("Autonomous drafting of missing mandatory controls.")
+            st.subheader("Stage 4: Policy Remediation")
+            st.caption("Pre-written remediation text for each missing control.")
             if missing_controls:
-                st.error("MISSING CONTROLS DETECTED. GENERATING COMPLIANT POLICY PATCHES...")
+                st.error("MISSING CONTROLS DETECTED. SUGGESTED POLICY TEXT BELOW.")
                 time.sleep(0.5) 
                 for ctrl in missing_controls:
-                    patch = REMEDIATION_INTELLIGENCE.get(ctrl, "Standard baseline security controls must be implemented.")
+                    patch = REMEDIATION_TEMPLATES.get(ctrl, "Standard baseline security controls must be implemented.")
                     st.markdown(f"""
                     <div style='background-color: #2b1c1c; padding: 15px; border-left: 5px solid #ff4b4b; margin-bottom: 12px; border-radius: 3px;'>
                         <span style='color: #ff4b4b; font-family: monospace; font-size: 14px; font-weight: bold;'>FAILED CONTROL: {ctrl.upper()}</span><br><br>
-                        <span style='color: #00ffcc; font-family: monospace; font-size: 12px; font-weight: bold;'>DRAFTED POLICY PATCH (COPY TO APPLY):</span><br>
+                        <span style='color: #00ffcc; font-family: monospace; font-size: 12px; font-weight: bold;'>SUGGESTED POLICY TEXT:</span><br>
                         <span style='color: #d1d1d1;'>{patch}</span>
                     </div>
                     """, unsafe_allow_html=True)
@@ -226,8 +239,8 @@ if uploaded_file is not None:
                 st.success("SYSTEM HARDENED. No missing controls detected.")
 
         with col2:
-            st.subheader("Semantic Heatmap Matrix")
-            st.caption("Mathematical confidence scores for vector entailment (Threshold: 0.50).")
+            st.subheader("Control Similarity Scores")
+            st.caption("Cosine similarity between each control and its closest passage (threshold 0.50).")
             
             df = pd.DataFrame(heatmap_data)
             st.dataframe(
@@ -242,7 +255,7 @@ if uploaded_file is not None:
             )
             
             st.subheader("RAG Evidence Extractor")
-            st.caption("Traceability engine highlighting the specific text chunk that satisfied the semantic requirement.")
+            st.caption("The passage that scored highest for each matched control.")
             
             # UPDATED UI LOGIC TO HANDLE EMPTY STATES
             if found_controls:
